@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pengeluaran;
+use App\Models\User;
+use App\Models\Kategori;
+use App\Models\Pemasukan;
 use Illuminate\Http\Request;
 
 class PengeluaranController extends Controller
@@ -47,7 +50,7 @@ class PengeluaranController extends Controller
     public function store(Request $request)
     {
         Pengeluaran::create([
-            'user_id'=> $request->user_id,
+            'user_id' => auth()->id(),
             'kategori_id'=> $request->id_kategori,
             'pemasukan_id'=> $request->id_pemasukan,
             'catatan' => $request->catatan,
@@ -95,7 +98,7 @@ class PengeluaranController extends Controller
     public function update(Request $request, $id)
     {
         Pengeluaran::where('id',$id)->update([
-            'user_id'->$request->user_id,
+            'user_id' => auth()->id(),
             'kategori_id' -> $request->kategori_id,
             'pemasukan_id' ->$request->pemasukan_id,
             'catatan' -> $request->catatan,

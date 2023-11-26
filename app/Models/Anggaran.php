@@ -13,5 +13,6 @@ class Anggaran extends Model
         'pemasukan_id',
         'kategori_id',
         'tanggal',
+        'anggaran',
     ];
 }

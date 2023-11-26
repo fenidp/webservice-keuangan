@@ -4,35 +4,39 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">Tabel Anggaran</h1>
+        <h1 class="h3 mb-2 text-gray-800">Tabel Tabungan</h1>
 
 
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <a href="{{ route('anggaran.create') }}" class="btn btn-primary btn-sm">Tambah</a>
+                <a href="{{ route('tabungan.create') }}" class="btn btn-primary btn-sm">Tambah</a>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <th>Pemasukan</th>
-                                <th>Kategori</th>
-                                <th>Tanggal</th>
+                                <th>Nama</th>
+                                <th>Anggaran</th>
+                                <th>Sistem</th>
+                                <th>Periode Mulai</th>
+                                <th>Periode Selesai</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($anggaran as $data)
+                            @foreach ($tabungan as $data)
                                 <tr>
-                                    <td>{{ $data->pemasukan_id }}</td>
-                                    <td>{{ $data->kategori_id }}</td>
-                                    <td>{{ $data->tanggal }}</td>
+                                    <td>{{ $data->nama }}</td>
+                                    <td>{{ $data->anggaran }}</td>
+                                    <td>{{ $data->sistem }}</td>
+                                    <td>{{ $data->periodeMulai }}</td>
+                                    <td>{{ $data->periodeSelesai }}</td>
                                     <td>
-                                        <a href="{{ route('anggaran.edit', $data->id) }}"
+                                        <a href="{{ route('tabungan.edit', $data->id) }}"
                                             class="btn btn-primary btn-sm">Edit</a>
-                                        <form action="{{ route('anggaran.destroy', $data->id) }}" method="POST"
+                                        <form action="{{ route('tabungan.destroy', $data->id) }}" method="POST"
                                             onclick="return confirm('Yakin Untuk Mengapus Data ?')" class="d-inline">
                                             @method('DELETE')
                                             @csrf

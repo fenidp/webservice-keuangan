@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pemasukan;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PemasukanController extends Controller
@@ -42,9 +43,9 @@ class PemasukanController extends Controller
     public function store(Request $request)
     {
         Pemasukan::create([
-            'user_id'=> $request->user_id,
+            'user_id' => auth()->id(),
             'pemasukan' => $request->pemasukan,
-            'Catatan' => $request->Catatan,
+            'catatan' => $request->catatan,
             'tanggal' => $request->tanggal,
             'jam' => $request->jam
         ]);
@@ -89,7 +90,7 @@ class PemasukanController extends Controller
     public function update(Request $request, $id)
     {
         Pemasukan::where('id',$id)->update([
-            'user_id' ->$request->user_id,
+            'user_id' => auth()->id(),
             'pemasukan' -> $request->pemasukan,
             'Catatan' ->$request->Catatan,
             'tanggal' -> $request->tanggal,

@@ -25,7 +25,26 @@
             <i class="fas fa-fw fa-table"></i>
             <span>Anggaran</span></a>
     </li>
-
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('kategori.index') }}">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Kategori</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('pemasukan.index') }}">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Pemasukan</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('pengeluaran.index') }}">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Pengeluaran</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('tabungan.index') }}">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Tabungan</span></a>
+    </li>
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 

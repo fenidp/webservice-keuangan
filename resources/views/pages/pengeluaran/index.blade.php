@@ -4,35 +4,39 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">Tabel Anggaran</h1>
+        <h1 class="h3 mb-2 text-gray-800">Tabel Pengeluaran</h1>
 
 
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <a href="{{ route('anggaran.create') }}" class="btn btn-primary btn-sm">Tambah</a>
+                <a href="{{ route('pengeluaran.create') }}" class="btn btn-primary btn-sm">Tambah</a>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <th>Pemasukan</th>
                                 <th>Kategori</th>
+                                <th>Pemasukan</th>
+                                <th>Catatan</th>
                                 <th>Tanggal</th>
+                                <th>Jam</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($anggaran as $data)
+                            @foreach ($pengeluaran as $data)
                                 <tr>
-                                    <td>{{ $data->pemasukan_id }}</td>
                                     <td>{{ $data->kategori_id }}</td>
+                                    <td>{{ $data->pemasukan_id }}</td>
+                                    <td>{{ $data->catatan }}</td>
                                     <td>{{ $data->tanggal }}</td>
+                                    <td>{{ $data->jam }}</td>
                                     <td>
-                                        <a href="{{ route('anggaran.edit', $data->id) }}"
+                                        <a href="{{ route('pengeluaran.edit', $data->id) }}"
                                             class="btn btn-primary btn-sm">Edit</a>
-                                        <form action="{{ route('anggaran.destroy', $data->id) }}" method="POST"
+                                        <form action="{{ route('pengeluaran.destroy', $data->id) }}" method="POST"
                                             onclick="return confirm('Yakin Untuk Mengapus Data ?')" class="d-inline">
                                             @method('DELETE')
                                             @csrf

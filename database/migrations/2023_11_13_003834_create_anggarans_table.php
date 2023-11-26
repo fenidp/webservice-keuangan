@@ -18,6 +18,8 @@ return new class extends Migration
             $table->unsignedBigInteger('pemasukan_id');
             $table->unsignedBigInteger('kategori_id');
             $table->date('tanggal');
+            $table->bigInteger('anggaran');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
         });
     }

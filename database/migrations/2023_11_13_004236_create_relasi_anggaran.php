@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('anggarans', function (Blueprint $table) {
             $table->foreign('kategori_id')->references('id')->on('kategoris')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('pemasukan_id')->references('id')->on('pemasukans')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
@@ -29,6 +30,7 @@ return new class extends Migration
         Schema::create('anggarans', function (Blueprint $table) {
             $table->dropforeign('anggarans_kategori_id_foreign');
             $table->dropforeign('anggarans_pemasukan_id_foreign');
+            $table->dropforeign('anggarans_user_id_foreign');
          });
     }
 };

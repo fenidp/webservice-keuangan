@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Anggaran;
+use App\Models\Kategori;
+Use App\Models\Pemasukan;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AnggaranController extends Controller
@@ -27,12 +30,13 @@ class AnggaranController extends Controller
      */
     public function create()
     {
-        $kategori = Katergori::all();
+        $kategori = Kategori::all();
         $pemasukan = Pemasukan ::all();
+        $user = User::all();
         return view('pages.anggaran.create',[
             'kategori'=> $kategori,
             'pemasukan' => $pemasukan,            
-
+            'user' => $user,
         ]);
     }
 
@@ -48,6 +52,8 @@ class AnggaranController extends Controller
             'pemasukan_id'=> $request->id_pemasukan,
             'kategori_id'=> $request->id_kategori,
             'tanggal' => $request->tanggal,
+            'anggaran' => $request->anggaran,
+            'user_id' => auth()->id(),
         ]);
         return redirect()->route('anggaran.index')->with('sukses','Disimpan');
     }
@@ -93,6 +99,8 @@ class AnggaranController extends Controller
             'pemasukan_id' ->$request->pemasukan_id,
             'kategori_id' -> $request->kategori_id,
             'tanggal' -> $request->tanggal,
+            'anggaran'->$request->anggaran,
+            'user_id' => auth()->id(),
         ]);
         return redirect()->route('anggaran.index')->with('Success', 'Berhasil Disimpan');
     }

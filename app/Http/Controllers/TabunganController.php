@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tabungan;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class TabunganController extends Controller
@@ -42,7 +43,7 @@ class TabunganController extends Controller
     public function store(Request $request)
     {
         Tabungan::create([
-            'user_id'=> $request->user_id,
+            'user_id' => auth()->id(),
             'nama'=> $request->nama,
             'anggaran'=> $request->anggaran,
             'periodelMulai' => $request->periodelMulai,
@@ -89,7 +90,7 @@ class TabunganController extends Controller
     public function update(Request $request, $id)
     {
         Tabungan::where('id',$id)->update([
-            'user_id'->$request->user_id,
+            'user_id' => auth()->id(),
             'nama'=> $request->nama,
             'anggaran'=> $request->anggaran,
             'periodelMulai' => $request->periodelMulai,
