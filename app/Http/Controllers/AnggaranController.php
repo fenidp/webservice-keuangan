@@ -31,7 +31,7 @@ class AnggaranController extends Controller
     public function create()
     {
         $kategori = Kategori::all();
-        $pemasukan = Pemasukan ::all();
+        $pemasukan = Pemasukan ::get();
         $user = User::all();
         return view('pages.anggaran.create',[
             'kategori'=> $kategori,

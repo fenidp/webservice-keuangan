@@ -67,7 +67,7 @@ class KategoriController extends Controller
     public function edit($id)
     {
         $kategori = Kategori::find($id);
-        return view('pages.kategori.index',[
+        return view('pages.kategori.edit',[
             'kategori' => $kategori 
         ]);
     }
