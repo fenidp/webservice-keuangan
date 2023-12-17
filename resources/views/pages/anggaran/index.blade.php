@@ -20,15 +20,21 @@
                                 <th>Pemasukan</th>
                                 <th>Kategori</th>
                                 <th>Tanggal</th>
+                                <th>Anggaran</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($anggaran as $data)
+                            @php
+                                $pemasukan = App\Models\Pemasukan::find($data->pemasukan_id);
+                                $kategori = App\Models\Kategori::find($data->kategori_id)
+                            @endphp
                                 <tr>
-                                    <td>{{ $data->pemasukan_id }}</td>
-                                    <td>{{ $data->kategori_id }}</td>
+                                    <td>{{ $pemasukan->pemasukan }}</td>
+                                    <td>{{ $kategori->nama }}</td>
                                     <td>{{ $data->tanggal }}</td>
+                                    <td>{{ $data->anggaran }}</td>
                                     <td>
                                         <a href="{{ route('anggaran.edit', $data->id) }}"
                                             class="btn btn-primary btn-sm">Edit</a>

@@ -13,7 +13,7 @@
                             <div class="form-group">
                                 <label class="font-weight-bold">nama</label>
                                 <input type="text" class="form-control @error('nama') is-invalid @enderror"
-                                    name="nama" value="{{$kategori->nama}}sukkan nama sebulan">
+                                    name="nama" value="{{$kategori->nama}}">
 
                                 <!-- error message untuk nama -->
                                 @error('nama')

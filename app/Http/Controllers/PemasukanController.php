@@ -91,10 +91,10 @@ class PemasukanController extends Controller
     {
         Pemasukan::where('id',$id)->update([
             'user_id' => auth()->id(),
-            'pemasukan' -> $request->pemasukan,
-            'Catatan' ->$request->Catatan,
-            'tanggal' -> $request->tanggal,
-            'jam' -> $request->jam
+            'pemasukan' => $request->pemasukan,
+            'catatan' =>$request->catatan,
+            'tanggal' => $request->tanggal,
+            'jam' => $request->jam
         ]);
         return redirect()->route('pemasukan.index')->with('Success', 'Berhasil Disimpan');
     }

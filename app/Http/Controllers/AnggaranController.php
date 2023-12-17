@@ -30,7 +30,7 @@ class AnggaranController extends Controller
      */
     public function create()
     {
-        $kategori = Kategori::all();
+        $kategori = Kategori::get();
         $pemasukan = Pemasukan ::get();
         $user = User::all();
         return view('pages.anggaran.create',[
@@ -49,8 +49,8 @@ class AnggaranController extends Controller
     public function store(Request $request)
     {
         Anggaran::create([
-            'pemasukan_id'=> $request->id_pemasukan,
-            'kategori_id'=> $request->id_kategori,
+            'pemasukan_id'=> $request->pemasukan_id,
+            'kategori_id'=> $request->kategori_id,
             'tanggal' => $request->tanggal,
             'anggaran' => $request->anggaran,
             'user_id' => auth()->id(),
@@ -80,8 +80,12 @@ class AnggaranController extends Controller
      */
     public function edit($id)
     {
+        $pemasukan = Pemasukan::get();
+        $kategori = Kategori::get(); 
         $data = Anggaran::find($id);
         return view('pages.anggaran.edit',[
+            'pemasukan' => $pemasukan,
+            'kategori' => $kategori,
             'data' => $data
         ]);
     }
@@ -96,10 +100,10 @@ class AnggaranController extends Controller
     public function update(Request $request, $id)
     {
         Anggaran::where('id',$id)->update([
-            'pemasukan_id' ->$request->pemasukan_id,
-            'kategori_id' -> $request->kategori_id,
-            'tanggal' -> $request->tanggal,
-            'anggaran'->$request->anggaran,
+            'pemasukan_id' =>$request->pemasukan_id,
+            'kategori_id' => $request->kategori_id,
+            'tanggal' => $request->tanggal,
+            'anggaran'=>$request->anggaran,
             'user_id' => auth()->id(),
         ]);
         return redirect()->route('anggaran.index')->with('Success', 'Berhasil Disimpan');

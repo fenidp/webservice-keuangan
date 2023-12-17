@@ -31,13 +31,12 @@ class PengeluaranController extends Controller
     public function create()
     {
         $user = User::all(); 
-        $kategori = Katergori::all();
-        $pemasukan = Pemasukan ::all();
+        $kategori = Kategori::get();
+        $pemasukan = Pemasukan ::get();
         return view('pages.pengeluaran.create',[
             'user' => $user,
             'kategori'=> $kategori,
             'pemasukan' => $pemasukan,            
-
         ]);
     }
 
@@ -51,8 +50,9 @@ class PengeluaranController extends Controller
     {
         Pengeluaran::create([
             'user_id' => auth()->id(),
-            'kategori_id'=> $request->id_kategori,
-            'pemasukan_id'=> $request->id_pemasukan,
+            'kategori_id'=> $request->kategori_id,
+            'pemasukan_id'=> $request->pemasukan_id,
+            'pengeluaran' => $request->pengeluaran,
             'catatan' => $request->catatan,
             'tanggal' => $request->tanggal,
             'jam' => $request->jam
@@ -82,8 +82,12 @@ class PengeluaranController extends Controller
      */
     public function edit($id)
     {
+        $pemasukan = Pemasukan::get();
+        $kategori = Kategori::get(); 
         $data = Pengeluaran::find($id);
         return view('pages.pengeluaran.edit',[
+            'pemasukan' => $pemasukan,
+            'kategori' => $kategori,
             'data' => $data
         ]);
     }
@@ -99,11 +103,12 @@ class PengeluaranController extends Controller
     {
         Pengeluaran::where('id',$id)->update([
             'user_id' => auth()->id(),
-            'kategori_id' -> $request->kategori_id,
-            'pemasukan_id' ->$request->pemasukan_id,
-            'catatan' -> $request->catatan,
-            'tanggal' -> $request->tanggal,
-            'jam'->$request->jam
+            'kategori_id' => $request->kategori_id,
+            'pemasukan_id' =>$request->pemasukan_id,
+            'pengeluaran' => $request->pengeluaran,
+            'catatan' => $request->catatan,
+            'tanggal' => $request->tanggal,
+            'jam'=>$request->jam
         ]);
         return redirect()->route('pengeluaran.index')->with('Success', 'Berhasil Disimpan');
     }

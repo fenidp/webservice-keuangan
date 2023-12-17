@@ -46,7 +46,7 @@ class TabunganController extends Controller
             'user_id' => auth()->id(),
             'nama'=> $request->nama,
             'anggaran'=> $request->anggaran,
-            'periodelMulai' => $request->periodelMulai,
+            'periodeMulai' => $request->periodeMulai,
             'periodeSelesai' => $request->periodeSelesai,
         ]);
         return redirect()->route('tabungan.index')->with('sukses','Disimpan');
@@ -93,7 +93,8 @@ class TabunganController extends Controller
             'user_id' => auth()->id(),
             'nama'=> $request->nama,
             'anggaran'=> $request->anggaran,
-            'periodelMulai' => $request->periodelMulai,
+            'sistem' => $request->sistem,
+            'periodeMulai' => $request->periodeMulai,
             'periodeSelesai' => $request->periodeSelesai,
         ]);
         return redirect()->route('tabungan.index')->with('Success', 'Berhasil Disimpan');

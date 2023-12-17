@@ -5,18 +5,17 @@
             <div class="col-md-12">
                 <div class="card border-0 shadow rounded">
                     <div class="card-body">
-                        <form action="{{ route('anggaran.update', $post->id) }}" method="POST">
+                        <form action="{{ route('pengeluaran.update', $data->id) }}" method="POST">
 
                             @csrf
-                            @method(PUT)
+                            @method('PATCH')
                             <div class="form-group">
                                 <label class="font-weight-bold">Kategori</label>
                                 <select class="form-control @error('kategori_id') is-invalid @enderror" name="kategori_id">
                                     <option value="" selected disabled>Pilih Kategori</option>
                                     @foreach ($kategori as $category)
-                                        <option value="{{ $category->id }}"
-                                            {{ old('kategori_id') == $category->id ? 'selected' : '' }}>
-                                            {{ $category->name }}
+                                        <option value="{{ $category->id }}"{{$category->id == $data->kategori_id ? 'selected' : ''}}>
+                                            {{ $category->nama }}
                                         </option>
                                     @endforeach
                                 </select>
@@ -32,10 +31,9 @@
                                 <label class="font-weight-bold">Pemasukan</label>
                                 <select class="form-control @error('pemasukan_id') is-invalid @enderror" name="pemasukan_id">
                                     <option value="" selected disabled>Pilih Pemasukan</option>
-                                    @foreach ($pemasukan as $pemasukan)
-                                        <option value="{{ $pemasukan->id }}"
-                                            {{ old('pemasukan_id') == $pemasukan->id ? 'selected' : '' }}>
-                                            {{ $pemasukan->nama_pemasukan }}
+                                    @foreach ($pemasukan as $dataPemasukan)
+                                        <option value="{{ $dataPemasukan->id }}" {{$dataPemasukan->id == $data->pemasukan_id  ? 'selected' : ''}}>
+                                            {{ $dataPemasukan->pemasukan }}
                                         </option>
                                     @endforeach
                                 </select>
@@ -48,9 +46,21 @@
                                 @enderror
                             </div>
                             <div class="form-group">
+                                <label class="font-weight-bold">Pengeluaran</label>
+                                <input type="text" class="form-control @error('pengeluaran') is-invalid @enderror"
+                                    name="pengeluaran" value="{{$data->pengeluaran}}">
+
+                                <!-- error message untuk pengeluaran -->
+                                @error('pengeluaran')
+                                    <div class="alert alert-danger mt-2">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
                                 <label class="font-weight-bold">Catatan</label>
                                 <input type="text" class="form-control @error('catatan') is-invalid @enderror"
-                                    name="catatan" value="{{ old('catatan') }}" placeholder="Masukkan catatan sebulan">
+                                    name="catatan" value="{{$data->catatan}}">
 
                                 <!-- error message untuk catatan -->
                                 @error('catatan')
@@ -62,7 +72,7 @@
                             <div class="form-group">
                                 <label class="font-weight-bold">Tanggal</label>
                                 <input type="date" class="form-control @error('tanggal') is-invalid @enderror"
-                                    name="tanggal" value="{{ old('tanggal') }}" placeholder="Masukkan Tanggal">
+                                    name="tanggal" value="{{$data->tanggal}}" placeholder="Masukkan Tanggal">
 
                                 <!-- error message untuk tanggal -->
                                 @error('tanggal')
@@ -74,7 +84,7 @@
                             <div class="form-group">
                                 <label class="font-weight-bold">Jam</label>
                                 <input type="time" class="form-control @error('jam') is-invalid @enderror"
-                                       name="jam" value="{{ old('jam') }}" placeholder="Masukkan Jam">
+                                       name="jam" value="{{$data->jam}}" >
                             
                                 <!-- error message untuk jam -->
                                 @error('jam')

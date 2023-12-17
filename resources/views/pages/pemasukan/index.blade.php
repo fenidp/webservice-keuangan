@@ -28,7 +28,7 @@
                             @foreach ($pemasukan as $data)
                                 <tr>
                                     <td>{{ $data->pemasukan }}</td>
-                                    <td>{{ $data->Catatan }}</td>
+                                    <td>{{ $data->catatan }}</td>
                                     <td>{{ $data->tanggal }}</td>
                                     <td>{{ $data->jam }}</td>
                                     <td>

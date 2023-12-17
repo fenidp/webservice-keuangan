@@ -8,11 +8,11 @@
                         <form action="{{ route('pemasukan.update', $data->id) }}" method="POST">
 
                             @csrf
-                            @method(PATCH)
+                            @method('PATCH')
                             <div class="form-group">
                                 <label class="font-weight-bold">Pemasukan</label>
                                 <input type="text" class="form-control @error('pemasukan') is-invalid @enderror"
-                                    name="pemasukan" value="{{ old('pemasukan') }}" placeholder="Masukkan pemasukan sebulan">
+                                    name="pemasukan" value="{{$data->pemasukan}}">
 
                                 <!-- error message untuk pemasukan -->
                                 @error('pemasukan')
@@ -24,7 +24,7 @@
                             <div class="form-group">
                                 <label class="font-weight-bold">Catatan</label>
                                 <input type="text" class="form-control @error('catatan') is-invalid @enderror"
-                                    name="catatan" value="{{ old('catatan') }}" placeholder="Masukkan catatan sebulan">
+                                    name="catatan" value="{{$data->catatan }}" >
 
                                 <!-- error message untuk catatan -->
                                 @error('catatan')
@@ -36,7 +36,7 @@
                             <div class="form-group">
                                 <label class="font-weight-bold">Tanggal</label>
                                 <input type="date" class="form-control @error('tanggal') is-invalid @enderror"
-                                    name="tanggal" value="{{ old('tanggal') }}" placeholder="Masukkan Tanggal">
+                                    name="tanggal" value="{{$data->tanggal }}" >
 
                                 <!-- error message untuk tanggal -->
                                 @error('tanggal')
@@ -48,7 +48,7 @@
                             <div class="form-group">
                                 <label class="font-weight-bold">Jam</label>
                                 <input type="time" class="form-control @error('jam') is-invalid @enderror"
-                                       name="jam" value="{{ old('jam') }}" placeholder="Masukkan Jam">
+                                       name="jam" value="{{ $data->jam }}" >
                             
                                 <!-- error message untuk jam -->
                                 @error('jam')

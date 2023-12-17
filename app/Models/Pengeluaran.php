@@ -13,6 +13,7 @@ class Pengeluaran extends Model
         'user_id',
         'kategori_id',
         'pemasukan_id',
+        'pengeluaran',
         'catatan',
         'tanggal',
         'jam',

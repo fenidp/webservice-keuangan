@@ -13,9 +13,8 @@
                                 <select class="form-control @error('kategori_id') is-invalid @enderror" name="kategori_id">
                                     <option value="" selected disabled>Pilih Kategori</option>
                                     @foreach ($kategori as $category)
-                                        <option value="{{ $category->id }}"
-                                            {{ old('kategori_id') == $category->id ? 'selected' : '' }}>
-                                            {{ $category->name }}
+                                        <option value="{{ $category->id }}">
+                                            {{ $category->nama }}
                                         </option>
                                     @endforeach
                                 </select>
@@ -31,16 +30,27 @@
                                 <label class="font-weight-bold">Pemasukan</label>
                                 <select class="form-control @error('pemasukan_id') is-invalid @enderror" name="pemasukan_id">
                                     <option value="" selected disabled>Pilih Pemasukan</option>
-                                    @foreach ($pemasukan as $pemasukan)
-                                        <option value="{{ $pemasukan->id }}"
-                                            {{ old('pemasukan_id') == $pemasukan->id ? 'selected' : '' }}>
-                                            {{ $pemasukan->nama_pemasukan }}
+                                    @foreach ($pemasukan as $data)
+                                        <option value="{{ $data->id }}">
+                                            {{ $data->pemasukan }}
                                         </option>
                                     @endforeach
                                 </select>
 
                                 <!-- error message untuk pemasukan_id -->
                                 @error('pemasukan_id')
+                                    <div class="alert alert-danger mt-2">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label class="font-weight-bold">Pengeluaran</label>
+                                <input type="text" class="form-control @error('pengeluaran') is-invalid @enderror"
+                                    name="pengeluaran" value="{{ old('pengeluaran') }}" placeholder="Masukkan pengeluaran">
+
+                                <!-- error message untuk pengeluaran -->
+                                @error('pengeluaran')
                                     <div class="alert alert-danger mt-2">
                                         {{ $message }}
                                     </div>

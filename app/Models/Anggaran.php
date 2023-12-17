@@ -14,5 +14,6 @@ class Anggaran extends Model
         'kategori_id',
         'tanggal',
         'anggaran',
+        'user_id'
     ];
 }

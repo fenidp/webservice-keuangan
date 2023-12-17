@@ -19,6 +19,7 @@
                             <tr>
                                 <th>Kategori</th>
                                 <th>Pemasukan</th>
+                                <th>Pengeluaran</th>
                                 <th>Catatan</th>
                                 <th>Tanggal</th>
                                 <th>Jam</th>
@@ -27,9 +28,14 @@
                         </thead>
                         <tbody>
                             @foreach ($pengeluaran as $data)
+                            @php
+                            $pemasukan = App\Models\Pemasukan::find($data->pemasukan_id);
+                            $kategori = App\Models\Kategori::find($data->kategori_id)
+                        @endphp
                                 <tr>
-                                    <td>{{ $data->kategori_id }}</td>
-                                    <td>{{ $data->pemasukan_id }}</td>
+                                    <td>{{ $kategori->nama }}</td>
+                                    <td>{{ $pemasukan->pemasukan }}</td>
+                                    <td>{{ $data->pengeluaran }}</td>
                                     <td>{{ $data->catatan }}</td>
                                     <td>{{ $data->tanggal }}</td>
                                     <td>{{ $data->jam }}</td>

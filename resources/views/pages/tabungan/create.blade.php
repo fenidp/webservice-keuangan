@@ -12,7 +12,7 @@
                             <div class="form-group">
                                 <label class="font-weight-bold">nama</label>
                                 <input type="text" class="form-control @error('nama') is-invalid @enderror"
-                                    name="nama" value="{{ old('nama') }}" placeholder="Masukkan nama sebulan">
+                                    name="nama" value="{{ old('nama') }}" placeholder="Masukkan Impian Anda">
 
                                 <!-- error message untuk nama -->
                                 @error('nama')
@@ -24,7 +24,7 @@
                             <div class="form-group">
                                 <label class="font-weight-bold">Anggaran</label>
                                 <input type="text" class="form-control @error('anggaran') is-invalid @enderror"
-                                    name="anggaran" value="{{ old('anggaran') }}" placeholder="Masukkan anggaran sebulan">
+                                    name="anggaran" value="{{ old('anggaran') }}" placeholder="Masukkan anggaran impian">
 
                                 <!-- error message untuk anggaran -->
                                 @error('anggaran_id')
@@ -36,7 +36,7 @@
                             <div class="form-group">
                                 <label class="font-weight-bold">Sistem</label>
                                 <select class="form-control @error('sistem') is-invalid @enderror" name="sistem">
-                                    <option value="" selected disabled>Pilih Interval Pemasukan</option>
+                                    <option value="" selected disabled>Pilih Sistem Menabung</option>
                                     <option value="harian" {{ old('sistem') == 'harian' ? 'selected' : '' }}>Harian</option>
                                     <option value="mingguan" {{ old('sistem') == 'mingguan' ? 'selected' : '' }}>Mingguan</option>
                                     <option value="bulanan" {{ old('sistem') == 'bulanan' ? 'selected' : '' }}>Bulanan</option>
